@@ -16,7 +16,7 @@ Whenever a new image is pushed to **Amazon ECR**:
 
 ## Architecture Diagram
 
-![Architecture-Diagram](./doc/Architecture Diagram Overview.png)
+![Architecture-Diagram](./doc/Architecture%20Diagram%20Overview.png)
 
 **Flow:**
 1. Jenkins pushes a Docker Image -> **Amazon ECR**
