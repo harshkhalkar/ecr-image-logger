@@ -236,7 +236,7 @@ Whenever a new image is pushed to **Amazon ECR**:
 
 ### 5. Jenkins Pipeline
 
-1. **Prerequisite**: [Jenkins Server Setup](https://github.com/harshkhalkar/jenkins.git)
+1. **Prerequisite**: [Jenkins Server Setup](https://www.jenkins.io/doc/book/installing/)
 2. Access the Jenkins server UI.
 3. Create a new item:
    - Name:
