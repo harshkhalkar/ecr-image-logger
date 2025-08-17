@@ -376,3 +376,49 @@ Whenever a new image is pushed to **Amazon ECR**:
    - Confirm the Lambda executed successfully and logged image metadata.
 
 ---
+
+# lambda_function.py Quick Overview
+
+# Features
+
+- Supports both **EventBridge** (AWS) and **custom webhook** events (e.g., from Jenkins)
+- Logs repository name, image tag, pushed-by info, and timestamp
+- Stores details in a **DynamoDB** table
+- Sends notifications via **SNS topic**
+
+## Environment Variables
+
+Set the following in the Lambda environment:
+
+- `DYNAMODB_TABLE`: Name of the DynamoDB table to log image data
+- `SNS_TOPIC_ARN`: ARN of the SNS topic for notifications
+
+## How It Works
+
+1. **Event Source**  
+   Receives an event from either:
+   - EventBridge (ECR image push)
+   - Jenkins (custom JSON payload)
+
+2. **Extract Details**  
+   Parses image tag, repository name, user who pushed the image.
+
+3. **Log to DynamoDB**  
+   Saves the image details with a timestamp.
+
+4. **Send SNS Notification**  
+   Publishes a message with the image info to an SNS topic.
+
+## Return
+
+Returns a JSON response with HTTP status `200` on success.
+
+## Example Notification
+
+```text
+Docker image pushed successfully!
+Repository: my-repo
+Tag: v1
+Pushed By: 
+Timestamp: 2025-08-16T10:25:30.123Z
+```
